@@ -6,7 +6,6 @@ info:
 channels:
   combats:
     '{combat_id}':
-  #combats/{combat_id}:
       parameters:
         combat_id:
           description: ID of the combat
@@ -26,6 +25,7 @@ channels:
 components:
   messages:
     hello:
+      name: hello
       payload:
         $ref: 'common/model.yaml#/combat'
   schemas:
