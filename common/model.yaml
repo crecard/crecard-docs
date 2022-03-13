@@ -1,0 +1,78 @@
+attribute:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    #dtype:
+      #type: string
+      #enum:
+        #- integer
+        #- string
+
+role:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    valid_attribute_ids:
+      type: array
+      items:
+        type: string
+        description: IDs of the attribute
+    initial_values:
+      type: array
+      items:
+        type: object
+        properties:
+          attribute_id:
+            type: string
+            description: ID of the attribute
+          value:
+            type: integer #TODO: dynamic type
+    deck_built:
+      type: array
+      items:
+        type: object
+        properties:
+          card_id:
+            type: string
+          amount:
+            type: integer
+
+player:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    role_id:
+      type: string
+      description: ID of the role
+    attributes:
+      type: object
+      properties:
+        attribute_id:
+          type: string
+          description: ID of the attribute
+        value:
+          type: integer
+
+combat:
+  type: object
+  properties:
+    seq_no:
+      type: number
+    sequence:
+      type: array
+      items:
+        type: string
+    teams:
+      type: array
+      items:
+        $ref: '#/player'
+

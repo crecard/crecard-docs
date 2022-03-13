@@ -1,0 +1,32 @@
+asyncapi: 2.3.0
+info:
+  title: Combat
+  version: 1.0.0
+  description: combat
+channels:
+  combats:
+    '{combat_id}':
+  #combats/{combat_id}:
+      parameters:
+        combat_id:
+          description: ID of the combat
+          schema:
+            type: string
+            examples:
+              - 53307860c3599d1de448e19d
+      publish:
+        message:
+          oneOf:
+            - $ref: '#/components/messages/hello'
+      subscribe:
+        message:
+          oneOf:
+            - $ref: '#/components/messages/hello'
+
+components:
+  messages:
+    hello:
+      payload:
+        $ref: 'common/model.yaml#/combat'
+  schemas:
+    $ref: 'common/model.yaml'

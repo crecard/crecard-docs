@@ -1,0 +1,11 @@
+asyncapi: 2.3.0
+info:
+  title: Crecard
+  version: 1.0.0
+  description: That card game.
+channels:
+  combats/{combat_id}:
+    $ref: 'combats.yaml#/channels/combats/{combat_id}'
+components:
+  schemas:
+    $ref: 'common/model.yaml'
