@@ -1,0 +1,28 @@
+name: AsyncAPI documents processing
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+    #"standard step" where repo needs to be checked-out first
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Setup environments
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - run: npm install -g @asyncapi/generator
+    - run: ag main.yaml @asyncapi/html-template -o build
+
+    #Using another action that takes generated HTML and pushes it to GH Pages
+    - name: Deploy GH page
+      uses: JamesIves/github-pages-deploy-action@3.4.2
+      with:
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
