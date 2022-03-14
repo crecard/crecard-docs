@@ -11,6 +11,71 @@ attribute:
         #- integer
         #- string
 
+card:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    description:
+      type: string
+    attributes_init:
+      type: array
+      items:
+        type: object
+        properties:
+          attribute_id:
+            type: string
+          value:
+            type: integer
+    attributes_added:
+      type: array
+      items:
+        type: object
+        properties:
+          attribute_id:
+            type: string
+          value:
+            type: integer
+    targets:
+      type: array
+      items:
+        type: object
+        properties:
+          range:
+            type: string
+            enum:
+              - single
+              - all
+              - random
+          side:
+            type: string
+            enum:
+              - myself
+              - enemies
+              - friends
+              - others # all - myself
+              - all
+    abilities:
+      type: array
+      items:
+        type: object
+        properties:
+          on:
+            $ref: 'enum.yaml#/card_on_enum'
+          when:
+            $ref: 'enum.yaml#/check_point_enum'
+          action:
+            $ref: 'enum.yaml#/actions_enum'
+          target:
+            type: integer
+          additional_values:
+            type: object
+            description: key => value, value can be attribute_id or integer
+            additionalProperties:
+              type: integer
+
 role:
   type: object
   properties:
@@ -23,7 +88,7 @@ role:
       items:
         type: string
         description: IDs of the attribute
-    initial_values:
+    initial_attributes:
       type: array
       items:
         type: object
@@ -33,7 +98,7 @@ role:
             description: ID of the attribute
           value:
             type: integer #TODO: dynamic type
-    deck_built:
+    pile_built:
       type: array
       items:
         type: object
@@ -61,6 +126,14 @@ player:
           description: ID of the attribute
         value:
           type: integer
+    piles:
+      type: object
+      properties:
+        built:
+          type: array
+          items:
+            type: string
+
 
 combat:
   type: object

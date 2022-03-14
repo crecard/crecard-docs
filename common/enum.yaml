@@ -1,0 +1,23 @@
+card_on_enum:
+  type: string
+  enum:
+    - board
+    - hand
+    - removed
+    - unused
+    - used
+
+actions_enum:
+  type: string
+  enum:
+    - change_attribute
+
+
+check_point_enum:
+  type: string
+  enum:
+    - after_shuffle_pile
+    - after_draw_card
+    - before_play_card
+    - after_play_card
+    - attribute_changed
