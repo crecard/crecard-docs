@@ -1,7 +1,7 @@
 attribute:
   type: object
   properties:
-    id:
+    code:
       type: string
     name:
       type: string
@@ -14,7 +14,7 @@ attribute:
 card:
   type: object
   properties:
-    id:
+    code:
       type: string
     name:
       type: string
@@ -25,7 +25,7 @@ card:
       items:
         type: object
         properties:
-          attribute_id:
+          attribute_code:
             type: string
           value:
             type: integer
@@ -34,7 +34,7 @@ card:
       items:
         type: object
         properties:
-          attribute_id:
+          attribute_code:
             type: string
           value:
             type: integer
@@ -72,30 +72,28 @@ card:
             type: integer
           additional_values:
             type: object
-            description: key => value, value can be attribute_id or integer
+            description: string => integer
             additionalProperties:
               type: integer
 
 role:
   type: object
   properties:
-    id:
+    code:
       type: string
     name:
       type: string
-    valid_attribute_ids:
+    valid_attribute_codes:
       type: array
       items:
         type: string
-        description: IDs of the attribute
     initial_attributes:
       type: array
       items:
         type: object
         properties:
-          attribute_id:
+          attribute_code:
             type: string
-            description: ID of the attribute
           value:
             type: integer #TODO: dynamic type
     pile_built:
@@ -103,7 +101,7 @@ role:
       items:
         type: object
         properties:
-          card_id:
+          card_code:
             type: string
           amount:
             type: integer
@@ -111,19 +109,17 @@ role:
 player:
   type: object
   properties:
-    id:
+    code:
       type: string
     name:
       type: string
-    role_id:
+    role_code:
       type: string
-      description: ID of the role
     attributes:
       type: object
       properties:
-        attribute_id:
+        attribute_code:
           type: string
-          description: ID of the attribute
         value:
           type: integer
     piles:
