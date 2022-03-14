@@ -71,8 +71,8 @@ card:
           target:
             type: integer
           additional_values:
-            type: object
             description: string => integer
+            type: object
             additionalProperties:
               type: integer
 
@@ -96,7 +96,7 @@ role:
             type: string
           value:
             type: integer #TODO: dynamic type
-    pile_built:
+    deck_built:
       type: array
       items:
         type: object
@@ -123,13 +123,12 @@ player:
         value:
           type: integer
     piles:
+      description: pile type => card codes
       type: object
-      properties:
-        built:
-          type: array
-          items:
-            type: string
-
+      additionalProperties:
+        type: array
+        items:
+          type: string
 
 combat:
   type: object

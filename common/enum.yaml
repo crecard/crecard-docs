@@ -21,3 +21,10 @@ check_point_enum:
     - before_play_card
     - after_play_card
     - attribute_changed
+
+operator_func_enum:
+  type: string
+  enum:
+    - equal_to
+    - greater_than
+    - less_than
