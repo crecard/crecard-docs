@@ -1,0 +1,32 @@
+ruleset:
+  type: object
+  properties:
+    name:
+      type: string
+    combat_ruleset:
+      type: object
+      properties:
+        total_time_attribute_code:
+          type: string
+          default: combat_total_time
+        speed_attribute_code:
+          type: string
+          default: player_speed
+        draw_count_attribute_code:
+          type: string
+          default: player_draw_count
+        hand_up_limit_attribute_code:
+          type: string
+          default: player_hand_up_limit
+
+attributes_init:
+  combat_attributes:
+    description: attribute_code => integer
+    type: object
+    additionalProperties:
+      type: integer
+  player_attributes:
+    description: attribute_code => integer
+    type: object
+    additionalProperties:
+      type: integer
