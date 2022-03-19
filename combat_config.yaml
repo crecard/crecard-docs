@@ -1,6 +1,8 @@
 ruleset:
   type: object
   properties:
+    code:
+      type: string
     name:
       type: string
     base_attributes_config:

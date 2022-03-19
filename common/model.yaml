@@ -116,10 +116,9 @@ player:
     role_code:
       type: string
     attributes:
+      description: attribute_code => value
       type: object
-      properties:
-        attribute_code:
-          type: string
+      additionalProperties:
         value:
           type: integer
     piles:
@@ -133,14 +132,17 @@ player:
 combat:
   type: object
   properties:
+    code:
+      type: string
+    ruleset_code:
+      type: string
     seq_no:
       type: number
     sequence:
       type: array
       items:
         type: string
-    teams:
+    players:
       type: array
       items:
         $ref: '#/player'
-
